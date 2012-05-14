@@ -61,7 +61,21 @@ score.swn <- function(tweet) {
   return(cs[1]-cs[2])
 }
 
-scores.swn <- mclapply(d$text, score.swn)
+## do the same thing, but faster
+score.swn.2 <- function(tweet) {
+  words <- strsplit(tweet, "\\s+")[[1]]
+  rows <- match(words, swn$Term)
+  rows <- rows[!is.na(rows)]
+  cs <- colSums(swn[rows,c(3,4)])
+  return(cs[1]-cs[2])  
+}
+
+#scores.swn <- mclapply(d$text, score.swn)
+scores.swn <- mclapply(d$text, score.swn.2)
 scores.breen <- mclapply(d$text, score.breen)
 
-save.image('work.Rda')
+save.image('work2.Rda')
+
+
+## 6052 sec for score.swn
+## 461 sec for score.swn2
