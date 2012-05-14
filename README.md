@@ -13,7 +13,7 @@ vegetable](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0C
 Tweets were downloaded over an extended period of time using a PHP client. Sentiment scoring is performed 
 using a simple dictionary lookup. The first approach uses Breens word lists while the second approach
 employs [SentiWordNet](http://sentiwordnet.isti.cnr.it/), which provides a finer way to score sentiments
-(though I don't go into the details of [POS tagging](http://en.wikipedia.org/wiki/Part-of-speech_tagging)
+(though I don't go into the details of [POS tagging](http://en.wikipedia.org/wiki/Part-of-speech_tagging))
 
 I should point out that I'm not a text-mining expert and am still on the fence on the validity of sentiment
 scoring. This presentation focuses on the use of R in such an application.
