@@ -104,6 +104,24 @@ tmp <- rbind(data.frame(Method='SWN', Scores=d$swn),
 ggplot(tmp, aes(x=Scores, fill=Method))+geom_density(alpha=0.25)+
   xlab("Sentiment Scores")
 
+## scores versus time? we just consider the hour of the tweet
+tmp <- d
+tmp.time<- strptime(d$time, format='%a, %d %b %Y %H:%M')
+tmp$hour <- tmp.time$hour
+## for each hour, we calc proportion of positive, negative, neutral tweets
+tmp <- subset(tmp, !is.na(swn))
+tmp$status <- sapply(tmp$swn, function(x) {
+  if (x > 0) return("Positive")
+  else if (x < 0) return("Negative")
+  else return("Neutral")
+})
+tmp <- data.frame(do.call('rbind', by(tmp, tmp$hour, function(x) table(x$status))))
+tmp$Hour <- factor(rownames(tmp), levels=0:23)
+tmp <- melt(tmp, id='Hour', variable_name='Sentiment')
+ggplot(tmp, aes(x=Hour,y=value,fill=Sentiment))+geom_bar(position='fill')+
+  xlab("")+ylab("Proportion")
+
+
 # geocoded
 library(maps)
 tmp <- subset(d, !is.na(geox) & geoy < -65 & geoy > -130 & geox > 25 & geox < 50)
