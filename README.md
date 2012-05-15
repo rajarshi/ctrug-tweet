@@ -7,7 +7,7 @@ text to generate a "sentiment score". It's significantly inspired by Jeff Breens
 
 My example is based on the work of [Prof. Debarchana Ghosh](http://www.geography.uconn.edu/people/ghosh.html)
  who is investigating health realated issues such as obesity, using Twitter as one possible data source. The 
-current dataset contains approximately 2M tweets related to the topic of pizza being [classified as a 
+current dataset contains approximately 180K tweets related to the topic of pizza being [classified as a 
 vegetable](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CIMBEBYwAA&url=http%3A%2F%2Fwww.msnbc.msn.com%2Fid%2F45306416%2Fns%2Fhealth-diet_and_nutrition%2Ft%2Fpizza-vegetable-congress-says-yes%2F&ei=zBGxT9btA-Pr0gHCpdykDA&usg=AFQjCNHX7_7RIhSUiFbOH-F15EXeVaK_dg)
 
 Tweets were downloaded over an extended period of time using a PHP client. Sentiment scoring is performed 
